@@ -1,22 +1,19 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {UserLayoutComponent} from './shared/components/user-layout/user-layout.component';
-import {RouterModule} from "@angular/router";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { UserCabinetRoutingModule } from './user-cabinet-routing.module';
+import { UserCabinetComponent } from './user-cabinet.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
   declarations: [
-    UserLayoutComponent
+    UserCabinetComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild([
-      {
-        path: '', component: UserLayoutComponent, children: []
-      }
-    ])
-  ],
-  exports: [RouterModule]
+    UserCabinetRoutingModule
+  ]
 })
-export class UserCabinetModule {
-}
+export class UserCabinetModule { }
