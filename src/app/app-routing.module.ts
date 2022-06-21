@@ -1,12 +1,9 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {UserLoginComponent} from "./shared/components/user-login/user-login.component";
 import {NotFoundComponent} from "./shared/components/not-found/not-found.component";
 
 const routes: Routes = [
-  {
-    path: 'user-cabinet', loadChildren: () => import('./user-cabinet/user-cabinet.module').then(m => m.UserCabinetModule)
-  },
   // Redirect to user login page
   // https://stackoverflow.com/questions/40150393/how-to-redirect-to-an-external-url-from-angular2-route-without-using-component
   {
@@ -17,6 +14,10 @@ const routes: Routes = [
     path: '404', component: NotFoundComponent
   },
   {
+    path: 'user-cabinet',
+    loadChildren: () => import('./user-cabinet/user-cabinet.module').then(m => m.UserCabinetModule)
+  },
+  {
     path: '**', redirectTo: '/404'
   }
 ];
@@ -25,4 +26,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

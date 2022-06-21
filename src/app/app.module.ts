@@ -5,6 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {UserLoginComponent} from './shared/components/user-login/user-login.component';
 import {NotFoundComponent} from './shared/components/not-found/not-found.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import {NotFoundComponent} from './shared/components/not-found/not-found.compone
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
 
   ],
   providers: [],
