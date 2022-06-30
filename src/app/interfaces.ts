@@ -13,11 +13,16 @@ export interface TokenRefreshRequest {
 }
 
 export interface Token {
-  "token_type": string,
-  "exp": number,
-  "iat": number,
-  "jti": string,
-  "user_id": number,
-  "username": string
+  token_type: string,
+  exp: number,
+  iat: number,
+  jti: string,
+  user_id: number,
+  username: string
 }
 
+
+export interface UserInfo {
+  userID: number,
+  username: string
+}

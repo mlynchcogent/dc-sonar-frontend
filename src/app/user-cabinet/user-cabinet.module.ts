@@ -15,6 +15,7 @@ import {ReusedPasswordsComponent} from './components/reused-passwords/reused-pas
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import {HttpErrorInterceptor} from "../shared/interceptors/http-error.interceptor";
 import {RefreshTokenInterceptor} from "../shared/interceptors/refresh-token.interceptor";
+import {MatMenuModule} from "@angular/material/menu";
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import {RefreshTokenInterceptor} from "../shared/interceptors/refresh-token.inte
     MatToolbarModule,
     FontAwesomeModule,
     MatListModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatMenuModule
   ]
 })
 export class UserCabinetModule {

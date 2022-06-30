@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import jwt_decode from 'jwt-decode';
 import {map, Observable} from "rxjs";
-import {Token, TokenData, TokenRefreshRequest, UserLoginData} from "../interfaces";
+import {Token, TokenData, TokenRefreshRequest, UserInfo, UserLoginData} from "../interfaces";
 import {Router} from '@angular/router';
 import {SnackBarService} from "../shared/services/snack-bar.service";
 import {SyncRequestClient, SyncRequestHeader} from 'ts-sync-request/dist'
@@ -60,11 +60,13 @@ export class UserLoginService {
     this.setStatus('login');
   }
 
-  logout() {
+  logout(isForce:boolean = true) {
     this.setTokenLocal('accessToken', this.tokenTemplate);
     this.setStatus('logout');
-    this.snackBarService.showInfo('Login is required')
     this.router.navigate(['/']);
+    if (isForce){
+      this.snackBarService.showInfo('Login is required');
+    }
   }
 
   getToken(userLoginData: UserLoginData): Observable<TokenData> {
@@ -141,6 +143,14 @@ export class UserLoginService {
     const refreshToken = this.getRefreshToken();
     if (this.supportFunctionsService.getCurrentUTCSeconds() >= refreshToken.exp) {
       this.logout();
+    }
+  }
+
+  public getUserIngo(): UserInfo{
+    const accessToken = this.getAccessToken();
+    return {
+      userID: accessToken.user_id,
+      username: accessToken.username
     }
   }
 }

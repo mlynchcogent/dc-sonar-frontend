@@ -2,17 +2,24 @@
   flex: 1 1 auto;
 }
 .header-block{
-  height: 10%;
+  height: 5%;
 }
 .main-block {
-  height: 80%;
+  height: 90%;
 }
 .footer-block{
-  height: 10%;
+  height: 5%;
+  font-size: small;
 }
 .menu-block{
   width: 15%;
 }
 .drawer-block{
   padding: 10px;
+}
+#user-info-btn{
+  cursor: pointer;
+}
+.user-info-menu-icon{
+  float: right;
 }
