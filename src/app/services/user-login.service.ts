@@ -7,6 +7,7 @@ import {Token, TokenData, TokenRefreshRequest, UserLoginData} from "../interface
 import {Router} from '@angular/router';
 import {SnackBarService} from "../shared/services/snack-bar.service";
 import {SyncRequestClient, SyncRequestHeader} from 'ts-sync-request/dist'
+import {SupportFunctionsService} from "../shared/services/support-functions.service";
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +30,10 @@ export class UserLoginService {
   };
 
 
-  constructor(private http: HttpClient, private router: Router, private snackBarService: SnackBarService) {
+  constructor(private http: HttpClient,
+              private router: Router,
+              private snackBarService: SnackBarService,
+              private supportFunctionsService: SupportFunctionsService) {
 
   }
 
@@ -129,4 +133,14 @@ export class UserLoginService {
     return '';
   }
 
+  public checkLogging(): void {
+
+    if (this.getStatus() != 'login') {
+      this.logout();
+    }
+    const refreshToken = this.getRefreshToken();
+    if (this.supportFunctionsService.getCurrentUTCSeconds() >= refreshToken.exp) {
+      this.logout();
+    }
+  }
 }

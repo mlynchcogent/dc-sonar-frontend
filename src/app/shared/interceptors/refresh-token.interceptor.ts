@@ -3,16 +3,16 @@ import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest}
 import {catchError, EMPTY, Observable, throwError} from 'rxjs';
 import {UserLoginService} from "../../services/user-login.service";
 import {SnackBarService} from "../services/snack-bar.service";
+import {SupportFunctionsService} from "../services/support-functions.service";
 
 @Injectable()
 export class RefreshTokenInterceptor implements HttpInterceptor {
 
-  constructor(private userLoginService: UserLoginService, private snackBarService: SnackBarService) {
+  constructor(private userLoginService: UserLoginService,
+              private snackBarService: SnackBarService,
+              private supportFunctionsService: SupportFunctionsService) {
   }
 
-  private static getCurrentUTCSeconds(): number {
-    return Math.floor(Date.now() / 1000);
-  }
 
   private Catch401Error(error: HttpErrorResponse, request: HttpRequest<unknown>, next: HttpHandler) {
     // http-error interceptor works for non 401 errors
@@ -71,10 +71,10 @@ export class RefreshTokenInterceptor implements HttpInterceptor {
         return EMPTY;
       }
 
-      console.log(RefreshTokenInterceptor.getCurrentUTCSeconds(), '>=', accessToken.exp);
+      console.log(this.supportFunctionsService.getCurrentUTCSeconds(), '>=', accessToken.exp);
 
-      if (RefreshTokenInterceptor.getCurrentUTCSeconds() >= accessToken.exp) {
-        if (RefreshTokenInterceptor.getCurrentUTCSeconds() >= refreshToken.exp) {
+      if (this.supportFunctionsService.getCurrentUTCSeconds() >= accessToken.exp) {
+        if (this.supportFunctionsService.getCurrentUTCSeconds() >= refreshToken.exp) {
           this.userLoginService.logout();
           return EMPTY;
         }

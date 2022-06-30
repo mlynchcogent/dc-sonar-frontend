@@ -12,10 +12,7 @@ export class NotFoundComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const userLoginStatus = this.userLoginService.getStatus();
-    if (userLoginStatus != 'login') {
-      this.userLoginService.logout();
-    }
+    this.userLoginService.checkLogging();
   }
 
 }
