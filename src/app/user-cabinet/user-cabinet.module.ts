@@ -12,6 +12,9 @@ import {SyncDomainsComponent} from './components/sync-domains/sync-domains.compo
 import {WeakPasswordsComponent} from './components/weak-passwords/weak-passwords.component';
 import {NeverExpirePasswordsComponent} from './components/never-expire-passwords/never-expire-passwords.component';
 import {ReusedPasswordsComponent} from './components/reused-passwords/reused-passwords.component';
+import {HTTP_INTERCEPTORS} from "@angular/common/http";
+import {HttpErrorInterceptor} from "../shared/interceptors/http-error.interceptor";
+import {RefreshTokenInterceptor} from "../shared/interceptors/refresh-token.interceptor";
 
 
 @NgModule({

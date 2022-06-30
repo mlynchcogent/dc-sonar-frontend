@@ -1,1 +1,7 @@
 <p>home works!</p>
+<button (click)="showBrutedAccs()">brutedNTLMAccList</button>
+<pre>
+  <span *ngIf="brutedNTLMAccList">
+    {{brutedNTLMAccList | json}}
+  </span>
+</pre>
