@@ -15,6 +15,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {HttpErrorInterceptor} from "./shared/interceptors/http-error.interceptor";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {RefreshTokenInterceptor} from "./shared/interceptors/refresh-token.interceptor";
+import {RequestLoaderBarInterceptor} from "./shared/interceptors/request-loader-bar.interceptor";
 
 
 @NgModule({
@@ -36,6 +37,11 @@ import {RefreshTokenInterceptor} from "./shared/interceptors/refresh-token.inter
     MatSnackBarModule
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RequestLoaderBarInterceptor,
+      multi: true
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: RefreshTokenInterceptor,

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {LoadersShowerService} from "../../../shared/services/loaders-shower.service";
 
 @Component({
   selector: 'app-weak-passwords',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WeakPasswordsComponent implements OnInit {
 
-  constructor() { }
+  constructor(public loadersShower: LoadersShowerService) { }
 
   ngOnInit(): void {
+    this.loadersShower.setPageLoading();
+    setTimeout(() => {
+      this.loadersShower.setPageLoaded();
+    }, 1000);
   }
 
 }

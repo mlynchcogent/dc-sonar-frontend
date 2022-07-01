@@ -1,1 +1,13 @@
-<p>sync-domains works!</p>
+<div *ngIf="!this.loadersShower.getIsPageLoading(); else loading">
+  <div>
+    sync-domains
+  </div>
+</div>
+<ng-template #loading>
+  <mat-grid-list cols="1" rowHeight="2:1">
+    <mat-grid-tile>
+      <mat-spinner></mat-spinner>
+    </mat-grid-tile>
+  </mat-grid-list>
+</ng-template>
+

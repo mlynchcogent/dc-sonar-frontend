@@ -16,6 +16,11 @@ import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import {HttpErrorInterceptor} from "../shared/interceptors/http-error.interceptor";
 import {RefreshTokenInterceptor} from "../shared/interceptors/refresh-token.interceptor";
 import {MatMenuModule} from "@angular/material/menu";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatIconModule} from "@angular/material/icon";
+import {MatCardModule} from "@angular/material/card";
+import {MatGridListModule} from "@angular/material/grid-list";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 
 @NgModule({
@@ -34,7 +39,12 @@ import {MatMenuModule} from "@angular/material/menu";
     FontAwesomeModule,
     MatListModule,
     MatSidenavModule,
-    MatMenuModule
+    MatMenuModule,
+    MatProgressSpinnerModule,
+    MatIconModule,
+    MatCardModule,
+    MatGridListModule,
+    MatProgressBarModule
   ]
 })
 export class UserCabinetModule {

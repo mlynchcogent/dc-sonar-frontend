@@ -1,19 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {faUser} from '@fortawesome/free-regular-svg-icons';
-import {
-  faArrowRightFromBracket,
-  faHouse,
-  faInfinity,
-  faRecycle,
-  faRotate,
-  faTriangleExclamation
-} from '@fortawesome/free-solid-svg-icons';
 import {UserLoginService} from "../services/user-login.service";
 import {UserInfo} from "../interfaces";
 import {map, Observable} from "rxjs";
 import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
-import { frontEndVersion } from 'src/environments/version';
+import {frontEndVersion} from 'src/environments/version';
+import {LoadersShowerService} from "../shared/services/loaders-shower.service";
 
 
 export interface VersionInfoData {
@@ -26,13 +18,7 @@ export interface VersionInfoData {
   styleUrls: ['./user-cabinet.component.scss']
 })
 export class UserCabinetComponent implements OnInit {
-  faUser = faUser;
-  faArrowRightFromBracket = faArrowRightFromBracket;
-  faHouse = faHouse;
-  faRotate = faRotate;
-  faInfinity = faInfinity;
-  faTriangleExclamation = faTriangleExclamation;
-  faRecycle = faRecycle;
+  isRequestSending: boolean = false;
 
   userInfo: UserInfo = {
     userID: 0,
@@ -42,7 +28,8 @@ export class UserCabinetComponent implements OnInit {
   backEndVersion = '0.0.0';
   frontEndVersion = frontEndVersion.title;
 
-  constructor(private userLoginService: UserLoginService, private http: HttpClient) {
+  constructor(private userLoginService: UserLoginService, private http: HttpClient, private loadersShower: LoadersShowerService) {
+
   }
 
   ngOnInit(): void {
@@ -50,7 +37,12 @@ export class UserCabinetComponent implements OnInit {
     this.userInfo = this.userLoginService.getUserIngo();
     this.getVersion().subscribe((versionInfoData) => {
       this.backEndVersion = versionInfoData.version;
-    })
+    });
+
+    this.loadersShower.sharedIsRequestSending.subscribe(isRequestSending => {
+      // console.log('subscribe isRequestSending', isRequestSending);
+      this.isRequestSending = isRequestSending
+    });
   }
 
   logout() {

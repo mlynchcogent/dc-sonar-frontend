@@ -17,9 +17,13 @@
 .drawer-block{
   padding: 10px;
 }
+.drawer-block-mat-card{
+  height: 100%;
+}
 #user-info-btn{
   cursor: pointer;
 }
-.user-info-menu-icon{
-  float: right;
+
+.header-icon {
+  vertical-align: sub;
 }
