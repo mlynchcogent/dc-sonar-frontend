@@ -1,0 +1,72 @@
+<div *ngIf="!this.loadersShower.getIsPageLoading(); else loading">
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Add domain
+      </mat-panel-title>
+      <mat-panel-description>
+        <mat-icon class="header-icon">add</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p><a href="{{environment.url}}/static/register_in_domain.ps1">Download</a> and run PS Script using the
+      Administrator account on the DC server and enter generated information below</p>
+    <form [formGroup]="form" (ngSubmit)="addDomain()">
+      <p>
+        <mat-form-field class="add-auto-field">
+          <input type="text" matInput placeholder="Domain" formControlName="name">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="add-auto-field">
+          <input type="text" matInput placeholder="HostName" formControlName="hostname">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="add-auto-field">
+          <input type="text" matInput placeholder="BaseDN" formControlName="baseDn">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="add-auto-field">
+          <input type="text" matInput placeholder="WorkstationName" formControlName="workstationName">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="add-auto-field">
+          <input type="password" matInput placeholder="WorkstationPassword" formControlName="workstationPassword">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="add-auto-field">
+          <input type="text" matInput placeholder="UserDN" formControlName="userDn">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="add-auto-field">
+          <input type="password" matInput placeholder="UserPassword" formControlName="userPassword">
+        </mat-form-field>
+      </p>
+
+      <button class="add-auto-field" type="submit" mat-raised-button color="primary">Add</button>
+    </form>
+
+  </mat-expansion-panel>
+  &nbsp;
+  <mat-divider></mat-divider>
+  <mat-accordion>
+    <app-domain
+      *ngFor="let domain of domainsList"
+      [domain]="domain"
+      (onRemove)="removeDomain($event)"></app-domain>
+  </mat-accordion>
+
+</div>
+<ng-template #loading>
+  <mat-grid-list cols="1" rowHeight="2:1">
+    <mat-grid-tile>
+      <mat-spinner></mat-spinner>
+    </mat-grid-tile>
+  </mat-grid-list>
+</ng-template>
+

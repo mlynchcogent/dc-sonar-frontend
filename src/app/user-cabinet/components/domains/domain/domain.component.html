@@ -1,0 +1,64 @@
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      {{domain.name}}
+      <mat-icon
+        *ngIf="domain.dumpStatus === 'ERROR' ||
+        domain.bruteStatus === 'ERROR' ||
+        domain.noExpPassStatus === 'ERROR' ||
+        domain.reusedPassStatus === 'ERROR'"
+        class="example-tab-icon">
+        priority_high
+      </mat-icon>
+    </mat-panel-title>
+    <mat-panel-description>
+      {{domain.hostname}}
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <mat-tab-group animationDuration="0ms">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <app-status-icon [status]="domain.dumpStatus"></app-status-icon>
+        Dumping NTLM-hashes
+      </ng-template>
+      <mat-card><p>Status: {{domain.dumpStatus}}</p>
+        <p>Status updated: {{domain.dumpStatusUpdate}}</p>
+        <p *ngIf="domain.dumpStatus === 'ERROR'">Last error: {{domain.dumpErrDesc}}</p></mat-card>
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <app-status-icon [status]="domain.bruteStatus"></app-status-icon>
+        Bruting NTLM-hashes
+      </ng-template>
+      <mat-card><p>Status: {{domain.bruteStatus}}</p>
+        <p>Progress: {{domain.bruteProgress}}%</p>
+        <p>Status updated: {{domain.bruteStatusUpdate}}</p>
+        <p *ngIf="domain.bruteStatus === 'ERROR'">Last error: {{domain.bruteErrorDesc}}</p></mat-card>
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <app-status-icon [status]="domain.noExpPassStatus"></app-status-icon>
+        Checking never expire passwords
+      </ng-template>
+
+      <mat-card><p>Status: {{domain.noExpPassStatus}}</p>
+        <p>Status updated: {{domain.noExpPassStatusUpdate}}</p>
+        <p *ngIf="domain.noExpPassStatus === 'ERROR'">Last error: {{domain.noExpPassErrDesc}}</p></mat-card>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <app-status-icon [status]="domain.reusedPassStatus"></app-status-icon>
+        Checking reused passwords
+      </ng-template>
+
+      <mat-card><p>Status: {{domain.reusedPassStatus}}</p>
+        <p>Status updated: {{domain.reusedPassStatusUpdate}}</p>
+        <p *ngIf="domain.reusedPassStatus === 'ERROR'">Last error: {{domain.reusedPassErrDesc}}</p></mat-card>
+    </mat-tab>
+  </mat-tab-group>
+  <button class="add-auto-field delete-domain-btn" type="submit" mat-raised-button color="warn"
+          (click)="openDialogDeleteDomain()">Delete
+  </button>
+</mat-expansion-panel>

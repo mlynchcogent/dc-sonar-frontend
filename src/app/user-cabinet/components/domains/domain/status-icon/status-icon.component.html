@@ -1,0 +1,5 @@
+<mat-icon *ngIf="status === 'INIT'" class="example-tab-icon">hourglass_empty</mat-icon>
+<mat-icon *ngIf="status === 'WAIT_PERFORMING'" class="example-tab-icon">hourglass_top</mat-icon>
+<mat-icon *ngIf="status === 'PERFORMING'" class="example-tab-icon">play_arrow</mat-icon>
+<mat-icon *ngIf="status === 'FINISHED'" class="example-tab-icon">done</mat-icon>
+<mat-icon *ngIf="status === 'ERROR'" class="example-tab-icon">error</mat-icon>
