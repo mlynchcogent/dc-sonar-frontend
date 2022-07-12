@@ -64,7 +64,7 @@ export interface DomainNoExpPassAcc {
   name: string,
   hostname: string,
   baseDn: string,
-  brutedNtlmAcc: NoExpPassAcc[]
+  noExpPassAcc: NoExpPassAcc[]
 }
 
 export interface DomainNoExpPassAccList extends Array<DomainNoExpPassAcc> {
@@ -81,7 +81,7 @@ export interface DomainReusedPassAcc {
   name: string,
   hostname: string,
   baseDn: string,
-  brutedNtlmAcc: ReusedPassAcc[]
+  reusedPassAcc: ReusedPassAcc[]
 }
 
 export interface DomainReusedPassAccList extends Array<DomainReusedPassAcc> {

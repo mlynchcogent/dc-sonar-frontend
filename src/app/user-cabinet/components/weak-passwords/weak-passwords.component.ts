@@ -19,7 +19,6 @@ export class WeakPasswordsComponent implements OnInit {
     this.weakPasswordsService.getDomainsBrutedNtlmList().subscribe((domainBrutedNTLMList) => {
       this.domainBrutedNTLMList = domainBrutedNTLMList;
       this.loadersShower.setPageLoaded();
-      console.log('this.domainBrutedNTLMList', this.domainBrutedNTLMList)
     });
   }
 

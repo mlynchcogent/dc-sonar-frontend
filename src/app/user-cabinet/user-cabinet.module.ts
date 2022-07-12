@@ -9,7 +9,7 @@ import {MatListModule} from "@angular/material/list";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {DomainsComponent} from './components/domains/domains.component';
 import {WeakPasswordsComponent} from './components/weak-passwords/weak-passwords.component';
-import {NeverExpirePasswordsComponent} from './components/never-expire-passwords/never-expire-passwords.component';
+import {NoExpirePasswordsComponent} from './components/no-expire-passwords/no-expire-passwords.component';
 import {ReusedPasswordsComponent} from './components/reused-passwords/reused-passwords.component';
 import {MatMenuModule} from "@angular/material/menu";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
@@ -30,6 +30,8 @@ import { WeakPasswordsDomainComponent } from './components/weak-passwords/weak-p
 import {MatSortModule} from "@angular/material/sort";
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import { NoExpirePasswordsDomainComponent } from './components/no-expire-passwords/no-expire-passwords-domain/no-expire-passwords-domain.component';
+import { ReusedPasswordsDomainComponent } from './components/reused-passwords/reused-passwords-domain/reused-passwords-domain.component';
 
 
 @NgModule({
@@ -37,12 +39,14 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     UserCabinetComponent,
     DomainsComponent,
     WeakPasswordsComponent,
-    NeverExpirePasswordsComponent,
+    NoExpirePasswordsComponent,
     ReusedPasswordsComponent,
     DomainComponent,
     DialogDeleteDomain,
     StatusIconComponent,
-    WeakPasswordsDomainComponent
+    WeakPasswordsDomainComponent,
+    NoExpirePasswordsDomainComponent,
+    ReusedPasswordsDomainComponent
   ],
   imports: [
     CommonModule,

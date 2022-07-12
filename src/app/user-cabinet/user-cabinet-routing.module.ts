@@ -3,7 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {UserCabinetComponent} from './user-cabinet.component';
 import {DomainsComponent} from "./components/domains/domains.component";
 import {WeakPasswordsComponent} from "./components/weak-passwords/weak-passwords.component";
-import {NeverExpirePasswordsComponent} from "./components/never-expire-passwords/never-expire-passwords.component";
+import {NoExpirePasswordsComponent} from "./components/no-expire-passwords/no-expire-passwords.component";
 import {ReusedPasswordsComponent} from "./components/reused-passwords/reused-passwords.component";
 
 const routes: Routes = [
@@ -12,7 +12,7 @@ const routes: Routes = [
       {path: '', redirectTo: '/user-cabinet/domains', pathMatch: 'full'},
       {path: 'domains', component: DomainsComponent},
       {path: 'weak-passwords', component: WeakPasswordsComponent},
-      {path: 'never-expire-passwords', component: NeverExpirePasswordsComponent},
+      {path: 'no-expire-passwords', component: NoExpirePasswordsComponent},
       {path: 'reused-passwords', component: ReusedPasswordsComponent}
 
     ]

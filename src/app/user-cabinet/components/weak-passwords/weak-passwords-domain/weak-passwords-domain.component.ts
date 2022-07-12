@@ -26,9 +26,7 @@ export class WeakPasswordsDomainComponent implements OnInit {
   };
 
   constructor() {
-    // console.log('this.domainBrutedNTLM.brutedNtlmAcc', this.domainBrutedNTLM.brutedNtlmAcc);
     this.dataSource = new MatTableDataSource(this.domainBrutedNTLM.brutedNtlmAcc);
-    // console.log('this.dataSource', this.dataSource);
   }
 
   ngAfterViewInit() {
