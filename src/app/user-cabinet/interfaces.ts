@@ -37,31 +37,52 @@ export interface createDomain {
 
 export interface BrutedNTLMAcc {
   pk: number,
-  domain: number,
   samAccName: string,
   accPassword: string,
   updateTime: string
 }
 
-export interface BrutedNTLMAccsList extends Array<BrutedNTLMAcc> {
+export interface DomainBrutedNTLM {
+  pk: number,
+  name: string,
+  hostname: string,
+  baseDn: string,
+  brutedNtlmAcc: BrutedNTLMAcc[]
+}
+
+export interface DomainBrutedNTLMList extends Array<DomainBrutedNTLM> {
 }
 
 export interface NoExpPassAcc {
   pk: number,
-  domain: number,
   samAccName: string,
   createTime: string
 }
 
-export interface NoExpPassAccsList extends Array<NoExpPassAcc> {
+export interface DomainNoExpPassAcc {
+  pk: number,
+  name: string,
+  hostname: string,
+  baseDn: string,
+  brutedNtlmAcc: NoExpPassAcc[]
+}
+
+export interface DomainNoExpPassAccList extends Array<DomainNoExpPassAcc> {
 }
 
 export interface ReusedPassAcc {
   pk: number,
-  domain: number,
   samAccName: string,
   createTime: string
 }
 
-export interface ReusedPassAccsList extends Array<ReusedPassAcc> {
+export interface DomainReusedPassAcc {
+  pk: number,
+  name: string,
+  hostname: string,
+  baseDn: string,
+  brutedNtlmAcc: ReusedPassAcc[]
+}
+
+export interface DomainReusedPassAccList extends Array<DomainReusedPassAcc> {
 }

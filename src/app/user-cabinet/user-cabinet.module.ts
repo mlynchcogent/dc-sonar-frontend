@@ -26,6 +26,10 @@ import {MatInputModule} from "@angular/material/input";
 import {DialogDeleteDomain, DomainComponent} from './components/domains/domain/domain.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import { StatusIconComponent } from './components/domains/domain/status-icon/status-icon.component';
+import { WeakPasswordsDomainComponent } from './components/weak-passwords/weak-passwords-domain/weak-passwords-domain.component';
+import {MatSortModule} from "@angular/material/sort";
+import {MatTableModule} from "@angular/material/table";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 
 @NgModule({
@@ -37,7 +41,8 @@ import { StatusIconComponent } from './components/domains/domain/status-icon/sta
     ReusedPasswordsComponent,
     DomainComponent,
     DialogDeleteDomain,
-    StatusIconComponent
+    StatusIconComponent,
+    WeakPasswordsDomainComponent
   ],
   imports: [
     CommonModule,
@@ -58,7 +63,10 @@ import { StatusIconComponent } from './components/domains/domain/status-icon/sta
     MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSortModule,
+    MatTableModule,
+    MatPaginatorModule
   ]
 })
 export class UserCabinetModule {

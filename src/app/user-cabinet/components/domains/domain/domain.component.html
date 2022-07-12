@@ -1,7 +1,7 @@
 <mat-expansion-panel>
   <mat-expansion-panel-header>
     <mat-panel-title>
-      {{domain.name}}
+      {{domain.name}} ({{domain.baseDn}})
       <mat-icon
         *ngIf="domain.dumpStatus === 'ERROR' ||
         domain.bruteStatus === 'ERROR' ||

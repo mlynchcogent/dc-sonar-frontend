@@ -42,7 +42,7 @@ export class UserLoginService {
     this.getToken(userLoginData).subscribe((tokenData: TokenData) => {
         console.log(tokenData);
         this.setNewToken(tokenData);
-        this.router.navigate(['/user-cabinet', 'home']);
+        this.router.navigate(['/user-cabinet', 'domains']);
       },
       err => {
         if (err.status === 401) {
