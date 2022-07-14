@@ -70,18 +70,20 @@ export interface DomainNoExpPassAcc {
 export interface DomainNoExpPassAccList extends Array<DomainNoExpPassAcc> {
 }
 
-export interface ReusedPassAcc {
+export interface DomainShortInfo {
   pk: number,
-  samAccName: string,
-  createTime: string
+  name: string,
+  hostname: string,
+  baseDn: string
 }
 
 export interface DomainReusedPassAcc {
   pk: number,
-  name: string,
-  hostname: string,
-  baseDn: string,
-  reusedPassAcc: ReusedPassAcc[]
+  domain: DomainShortInfo,
+  samAccName: string,
+  reusedDomain: DomainShortInfo,
+  reusedSamAccName: string,
+  createTime: string,
 }
 
 export interface DomainReusedPassAccList extends Array<DomainReusedPassAcc> {

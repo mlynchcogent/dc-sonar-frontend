@@ -12,10 +12,11 @@ export class ReusedPasswordsService {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
-  getDomainReusedPassAccList(): Observable<DomainReusedPassAccList> {
-    return this.http.get<DomainReusedPassAccList>(`${environment.url}/api/user-cabinet/domain-reused-pass-acc/`, this.httpOptions).pipe(
+  getDomainReusedPassAccList(pk_domain: number): Observable<DomainReusedPassAccList> {
+    return this.http.get<DomainReusedPassAccList>(`${environment.url}/api/user-cabinet/domain-reused-pass-acc/?domain=${pk_domain}`, this.httpOptions).pipe(
       map((data: DomainReusedPassAccList) => {
         return data;
       })

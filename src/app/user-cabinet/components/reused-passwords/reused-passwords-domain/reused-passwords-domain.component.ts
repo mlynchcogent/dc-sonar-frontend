@@ -1,8 +1,9 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
-import {DomainReusedPassAcc, ReusedPassAcc} from "../../../interfaces";
+import {DomainReusedPassAcc, DomainReusedPassAccList, DomainShortInfo} from "../../../interfaces";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
+import {ReusedPasswordsService} from "../../../services/reused-passwords.service";
 
 @Component({
   selector: 'app-reused-passwords-domain',
@@ -10,20 +11,20 @@ import {MatSort} from "@angular/material/sort";
   styleUrls: ['./reused-passwords-domain.component.scss']
 })
 export class ReusedPasswordsDomainComponent implements OnInit {
-  displayedColumns: string[] = ['pk', 'samAccName', 'createTime'];
-  dataSource: MatTableDataSource<ReusedPassAcc>;
+  displayedColumns: string[] = ['pk', 'domainName', 'samAccName', 'reusedDomainName', 'reusedSamAccName', 'createTime'];
+  dataSource: MatTableDataSource<DomainReusedPassAcc>;
   // @ts-ignore
   @ViewChild(MatPaginator) paginator: MatPaginator;
   // @ts-ignore
   @ViewChild(MatSort) sort: MatSort;
 
-  @Input() domainReusedPassAcc: DomainReusedPassAcc = {
+  @Input() domain: DomainShortInfo = {
     'pk': 0,
     'name': '',
     'hostname': '',
-    'baseDn': '',
-    'reusedPassAcc': []
+    'baseDn': ''
   }
+  domainReusedPassAccList: DomainReusedPassAccList = [];
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -34,17 +35,22 @@ export class ReusedPasswordsDomainComponent implements OnInit {
     }
   }
 
-  constructor() {
-    this.dataSource = new MatTableDataSource(this.domainReusedPassAcc.reusedPassAcc);
-  }
-
-  ngAfterViewInit() {
-    this.dataSource = new MatTableDataSource(this.domainReusedPassAcc.reusedPassAcc);
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+  constructor(private reusedPasswordsService: ReusedPasswordsService) {
+    this.dataSource = new MatTableDataSource(this.domainReusedPassAccList);
   }
 
   ngOnInit(): void {
+    this.reusedPasswordsService.getDomainReusedPassAccList(this.domain.pk).subscribe((domainReusedPassAccList) => {
+      this.domainReusedPassAccList = domainReusedPassAccList;
+      this.dataSource = new MatTableDataSource(this.domainReusedPassAccList);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    })
+    console.log('ngOnInit finished');
   }
+
+  ngAfterViewInit() {
+  }
+
 
 }
