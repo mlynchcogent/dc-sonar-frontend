@@ -22,7 +22,7 @@
         Dumping NTLM-hashes
       </ng-template>
       <mat-card><p>Status: {{domain.dumpStatus}}</p>
-        <p>Status updated: {{domain.dumpStatusUpdate}}</p>
+        <p>Status updated: {{domain.dumpStatusUpdate | date :'long' }}</p>
         <p *ngIf="domain.dumpStatus === 'ERROR'">Last error: {{domain.dumpErrDesc}}</p></mat-card>
     </mat-tab>
 
@@ -33,7 +33,7 @@
       </ng-template>
       <mat-card><p>Status: {{domain.bruteStatus}}</p>
         <p>Progress: {{domain.bruteProgress}}%</p>
-        <p>Status updated: {{domain.bruteStatusUpdate}}</p>
+        <p>Status updated: {{domain.bruteStatusUpdate | date :'long'}}</p>
         <p *ngIf="domain.bruteStatus === 'ERROR'">Last error: {{domain.bruteErrorDesc}}</p></mat-card>
     </mat-tab>
 
@@ -44,7 +44,7 @@
       </ng-template>
 
       <mat-card><p>Status: {{domain.noExpPassStatus}}</p>
-        <p>Status updated: {{domain.noExpPassStatusUpdate}}</p>
+        <p>Status updated: {{domain.noExpPassStatusUpdate | date :'long'}}</p>
         <p *ngIf="domain.noExpPassStatus === 'ERROR'">Last error: {{domain.noExpPassErrDesc}}</p></mat-card>
     </mat-tab>
     <mat-tab>
@@ -54,7 +54,7 @@
       </ng-template>
 
       <mat-card><p>Status: {{domain.reusedPassStatus}}</p>
-        <p>Status updated: {{domain.reusedPassStatusUpdate}}</p>
+        <p>Status updated: {{domain.reusedPassStatusUpdate | date :'long'}}</p>
         <p *ngIf="domain.reusedPassStatus === 'ERROR'">Last error: {{domain.reusedPassErrDesc}}</p></mat-card>
     </mat-tab>
   </mat-tab-group>
