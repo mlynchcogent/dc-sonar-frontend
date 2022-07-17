@@ -4,7 +4,6 @@ import {UserInfo} from "../interfaces";
 import {map, Observable} from "rxjs";
 import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
-import {frontEndVersion} from 'src/environments/version';
 import {LoadersShowerService} from "../shared/services/loaders-shower.service";
 
 
@@ -25,8 +24,7 @@ export class UserCabinetComponent implements OnInit {
     username: ''
   };
 
-  backEndVersion = '0.0.0';
-  frontEndVersion = frontEndVersion.title;
+  version = '0.0.0-0';
 
   constructor(private userLoginService: UserLoginService, private http: HttpClient, private loadersShower: LoadersShowerService) {
 
@@ -36,7 +34,7 @@ export class UserCabinetComponent implements OnInit {
     this.userLoginService.checkLogging();
     this.userInfo = this.userLoginService.getUserIngo();
     this.getVersion().subscribe((versionInfoData) => {
-      this.backEndVersion = versionInfoData.version;
+      this.version = versionInfoData.version;
     });
 
     this.loadersShower.sharedIsRequestSending.subscribe(isRequestSending => {
