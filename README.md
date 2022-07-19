@@ -1,27 +1,39 @@
-# DcSonarFrontend
+# Dc Sonar Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.2.
+It's the part of the [dc-sonar](https://github.com/ST1LLY/dc-sonar) project
 
-## Development server
+## Deploy for development
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Windows
 
-## Code scaffolding
+[Download](https://nodejs.org/download/release/v16.15.1/) and install Node.js v16.15.1
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Install Angular CLI version 14.0.2
 
-## Build
+```powershell
+npm install -g @angular/cli@14.0.2
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Clone [ntlm-scrutinizer](https://github.com/ST1LLY/ntlm-scrutinizer)
 
-## Running unit tests
+```bash
+git clone https://github.com/ST1LLY/dc-sonar-frontend
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Open Powershell, cd to created dc-sonar-frontend folder
 
-## Running end-to-end tests
+init Angular project
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```powershell
+npm install
+```
 
-## Further help
+## Run development
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Execute in dc-sonar-frontend folder
+
+```bash
+ng serve --ssl
+```
+
+Open https://localhost:4200/
