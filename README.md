@@ -1,4 +1,4 @@
-# Dc Sonar Frontend
+# DC Sonar Frontend
 
 It's the part of the [dc-sonar](https://github.com/ST1LLY/dc-sonar) project
 
