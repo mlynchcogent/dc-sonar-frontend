@@ -43,9 +43,3 @@ ng serve --ssl
 ```
 
 Open https://localhost:4200/.
-
-## Versions
-
-### 2022.7.27-1
-
-The initial version.
